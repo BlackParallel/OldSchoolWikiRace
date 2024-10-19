@@ -41,8 +41,6 @@ const invalidPrefixes = [
 ];
 // ################################################################################ WIKI FETCH
 
-// Call this function when the page is loaded
-window.addEventListener('DOMContentLoaded', loadPageContentOnRefresh);
 
 // Function to fetch and display the wiki page content
 function fetchWikiPage(pageTitle, incrementClick = true, testingForRedirect = false, pageElement = null) {
@@ -257,7 +255,7 @@ function loadPageContentOnRefresh() {
     // Remove http & https from the URL:
     const url = window.location.href;
     const cleanUrl = url.replace(/^https?:\/\//, '');
-    console.log(cleanUrl);  // Output: "example.com"
+    console.log(cleanUrl);
 }
 
 // Function to increment the click counter
@@ -446,6 +444,8 @@ function updateGameCode(startPage, endPage) {
     //const endPage = document.getElementById('endPage').value;
     const gameCode = `${startPage}:${endPage}`;
     document.getElementById('codeInput').value = gameCode;
+
+    console.log(`${startPage} : ${endPage}`);
 }
 
 function showNotification(message) {
@@ -475,6 +475,8 @@ function toggleButtons(disable) {
 
 // ################################################################################ EVENT LISTENERS
 
+// Call this function when the page is loaded
+window.addEventListener('DOMContentLoaded', loadPageContentOnRefresh);
 
 // Event listeners for the buttons
 document.getElementById('randomStartButton').addEventListener('click', fetchRandomStartPage);
