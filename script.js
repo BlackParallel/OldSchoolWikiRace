@@ -592,8 +592,8 @@ document.getElementById('pasteCodeButton').addEventListener('click', async funct
 });
 
 // Automatically update the game code when start or end pages are changed
-document.getElementById('startPage').addEventListener('input', updateGameCode);
-document.getElementById('endPage').addEventListener('input', updateGameCode);
+//document.getElementById('startPage').addEventListener('input', updateGameCode);
+//document.getElementById('endPage').addEventListener('input', updateGameCode);
 
 // Attach event listener to "Donate" button
 document.getElementById('donateButton').addEventListener('click', () => {
