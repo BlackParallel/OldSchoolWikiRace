@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSRS Wikirace Game</title>
+    <link rel="stylesheet" href="https://oldschool.runescape.wiki/load.php?modules=site.styles&only=styles&skin=vector">
+    
+    <link rel="stylesheet" href="styles.css"> <!-- Optional: You can style your page here -->
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="headerContainer">
+        <img src="osrswikiracelogo.png" alt="Game Logo" id="headerImage" href="#" onclick="location.reload(); return false;">
+        
+        <div id="headerContent">
+            <div class="inputMargin">   
+                <input id="startPage" class="inputField" placeholder="Enter Start Page" value="Bucket">
+                <button id="randomStartButton" class="inputButton">🎲 Start Page</button>
+                <input id="endPage" class="inputField" placeholder="Enter End Page" value="Coins"></input>
+                <button id="randomEndButton" class="inputButton">🎲 End Page</button>
+                <button id="randomBothButton" class="inputButton">🎲 🎲</button>
+
+                <button id="dailyButton" class="inputButton">📅 Daily Challenge</button>
+            </div>
+            <div class="inputMargin">
+                <button id="startButton" class="inputButton" >Start Game</button>
+                <div>Clicks:</div> <div id="clickCounter">0</div>
+                <div>Time:</div> <div id="timerCounter">00:00</div> <!-- Timer added here -->
+
+                <button id="donateButton" class="inputButton inputRight">💸</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Div to show the wiki page content -->
+    <div id="pageContent"></div>
+
+    <!-- Message for win condition as a small overlay -->
+    <div id="gameMessageOverlay" class="overlay hidden">
+        <div class="overlay-content">
+            <p id="congratsMessageText"><b>Well done!</b></p>
+            <p id="gameMessageText"></p>
+            <p id="timeMessageText"></p>
+            <p id="routeMessageText"></p>
+            <div>
+                <button id="restartOverlayButton" class="overlayButton">Restart</button>
+            </div>
+            <div>
+                <button id="shareOverlayButton" class="overlayButton">Share Results</button>
+                <button id="shareRouteOverlayButton" class="overlayButton">Share Route</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="backButtonOverlay">   
+        <button id="backButton" class="hidden">I got stuck let me go back</button>
+    </div>
+
+    <!-- Notification div for sharing message -->
+    <div id="notification" class=""></div>
+
+    <!-- Link to external JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
