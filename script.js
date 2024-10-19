@@ -2,6 +2,9 @@ let website = 'https://oldschool.runescape.wiki/wiki/Main_Page'; //oldschoolwiki
 
 let visitedPages = [];
 
+let startPageInit = 'Bucket';
+let endPageInit = 'Coins';
+
 let startPage = ''; // Stores the target start page
 let endPage = '';  // Stores the target end page
 
@@ -228,8 +231,8 @@ function resetGame() {
     toggleButtons(false); // Re-enable buttons
     toggleBackButton();
     stopTimer();
-    startPage = '';
-    endPage = '';
+    startPage = startPageInit;
+    endPage = endPageInit;
 }
 
 function loadPageContentOnRefresh() {
@@ -237,8 +240,17 @@ function loadPageContentOnRefresh() {
     console.log(`Redirected to: ${document.title}`);
 
     // Call the update function initially to set the default value
-    document.getElementById('startPage').value = startPage;
-    document.getElementById('endPage').value = endPage;
+    if (document.getElementById('startPage').value === '') {
+        document.getElementById('startPage').value = startPage;
+    } else {
+        document.getElementById('startPage').value = startPageInit;
+    }
+    if (document.getElementById('endPage').value === '') {
+        document.getElementById('endPage').value = endPage;
+    }
+    else {
+        document.getElementById('endPage').value = endPageInit;
+    }
     updateGameCode();
 
     // Remove http & https from the URL:
@@ -497,7 +509,7 @@ document.getElementById('dailyButton').addEventListener('click', function() {
 document.getElementById('startButton').addEventListener('click', () => {
     startButt = document.getElementById('startButton');
     if (startButt.textContent === 'Start Game') {
-        resetGame();
+        //resetGame();
         startPage = document.getElementById('startPage').value.trim();
         endPage = document.getElementById('endPage').value.trim();
         
