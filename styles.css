@@ -418,7 +418,7 @@ h1::after, h2::after {
 
 /* Remove any captions */
 figcaption,
-.messagebox,
+/*.messagebox,*/
 .rt-commentedText,
 .navbox {
     display: none;
