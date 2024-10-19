@@ -228,6 +228,11 @@ function resetGame() {
 function loadPageContentOnRefresh() {
     window.history.replaceState({}, document.title, "/");
     console.log(`Redirected to: ${document.title}`);
+
+    // Remove http & https from the URL:
+    const url = "https://example.com";
+    const cleanUrl = url.replace(/^https?:\/\//, '');
+    console.log(cleanUrl);  // Output: "example.com"
 }
 
 // Function to increment the click counter
