@@ -574,7 +574,7 @@ document.getElementById('shareOverlayButton').addEventListener('click', function
 });
 
 document.getElementById('shareRouteOverlayButton').addEventListener('click', function() {
-    const newUrl = `/?start=${startPage}&end=${endPage}`;
+    const newUrl = `/?start=${encodeURIComponent(startPage)}&end=${encodeURIComponent(endPage)}`;
     const clickCounter = document.getElementById('clickCounter').textContent;
     const clickAmount = clickCounter === "1" ? "click" : "clicks";
     const sharedMessage =   `**Old School Wiki Race Results:**\n` + 
