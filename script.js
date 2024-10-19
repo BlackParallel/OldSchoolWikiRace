@@ -226,7 +226,7 @@ function resetGame() {
 }
 
 function loadPageContentOnRefresh() {
-    window.history.replaceState({}, document.title, "index.html");
+    window.history.replaceState({}, document.title, "/");
     console.log(`Redirected to: index.html`);
 }
 
