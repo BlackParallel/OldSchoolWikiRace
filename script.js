@@ -231,6 +231,8 @@ function resetGame() {
     toggleButtons(false); // Re-enable buttons
     toggleBackButton();
     stopTimer();
+    // mainmenu > startgame
+    document.getElementById('startButton').textContent = 'Start Game'
     //startPage = startPageInit;
     //endPage = endPageInit;
 }
