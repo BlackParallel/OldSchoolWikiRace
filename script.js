@@ -310,7 +310,9 @@ function toggleButtons(disable) {
     const buttons = document.querySelectorAll('#headerContainer .inputButton'); // Select buttons in the inputContainer
     buttons.forEach(button => {
         startButt = document.getElementById('startButton');
+        copyButt = document.getElementById('copyCodeButton');
         if (startButt === button && startButt.textContent == 'Main Menu') { }
+        else if (copyButt === button && copyButt.textContent == 'Copy Code') { }
         else { button.disabled = disable; } // Disable or enable based on the parameter
         
     });
@@ -351,6 +353,8 @@ async function fetchRandomPage() {
             break; // Break the loop if the title is valid
         }
     }
+    updateGameCode(); // Update the game code display
+
     toggleButtons(false); // Re-enable buttons after fetching
     return randomPage; // Return if the title is valid
 }
