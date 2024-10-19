@@ -45,8 +45,10 @@ function fetchWikiPage(pageTitle, incrementClick = true, testingForRedirect = fa
         .then(data => {
             const contentDiv = document.getElementById('pageContent');
             if (data.error) {
-                contentDiv.innerHTML = `<p>Page not found: ${pageTitle}</p>`;
+                //contentDiv.innerHTML = `<p>Page not found: ${pageTitle}</p>`;
+                showNotification('Page not found!');
                 console.log(`Page not found: ${pageTitle}`);
+                return;
             } else {
                 // Check if the page is a redirect
                 if (data.parse) {
@@ -229,6 +231,9 @@ function loadPageContentOnRefresh() {
     window.history.replaceState({}, document.title, "/");
     console.log(`Redirected to: ${document.title}`);
 
+    // Call the update function initially to set the default value
+    updateGameCode();
+
     // Remove http & https from the URL:
     const url = window.location.href;
     const cleanUrl = url.replace(/^https?:\/\//, '');
@@ -266,6 +271,7 @@ function displayWinMessage() {
     
     overlay.classList.remove('hidden');
 }
+
 function displayRoute(html = true)
 {    
     // Decode each page title before joining them (remove '%23' etc.)
@@ -299,7 +305,6 @@ function getDailySeed() {
 
 // ################################################################################ RANDOM PAGE FETCH
 
-
 // Function to disable buttons
 function toggleButtons(disable) {
     const buttons = document.querySelectorAll('#headerContainer .inputButton'); // Select buttons in the inputContainer
@@ -310,7 +315,6 @@ function toggleButtons(disable) {
         
     });
 }
-
 
 // Function to fetch a random page and update the start page input
 function fetchRandomStartPage() {
@@ -418,6 +422,27 @@ function stopTimer() {
     clearInterval(timerInterval); // Stops the interval
 }
 
+// ################################################################################ GAME CODE
+
+// Function to update the code input based on start and end pages
+function updateGameCode() {
+    const startPage = document.getElementById('startPage').value;
+    const endPage = document.getElementById('endPage').value;
+    const gameCode = `${startPage}:${endPage}`;
+    document.getElementById('codeInput').value = gameCode;
+}
+
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.classList.add('visible');
+    
+    // Remove notification after 2 seconds
+    setTimeout(() => {
+        notification.classList.remove('visible');
+    }, 2000);
+}
+
 // ################################################################################ EVENT LISTENERS
 
 
@@ -523,17 +548,45 @@ document.getElementById('shareRouteOverlayButton').addEventListener('click', fun
                             `${displayRoute(false)}\n` +
                             `${website}`;
     navigator.clipboard.writeText(sharedMessage);
-    
-    // Show notification
-    const notification = document.getElementById('notification');
-    notification.textContent = 'Route copied to clipboard!';
-    notification.classList.add('visible');
-    
-    // Remove notification after 2 seconds
-    setTimeout(() => {
-        notification.classList.remove('visible');
-    }, 2000);
+
+    showNotification('Route copied to clipboard!');
 });
+
+// Event listener to copy the game code to clipboard
+document.getElementById('copyCodeButton').addEventListener('click', function() {
+    const gameCode = document.getElementById('codeInput').value;
+    navigator.clipboard.writeText(gameCode).then(() => {
+        showNotification('Code copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+});
+
+// Event listener to paste the game code from clipboard and update start and end pages
+document.getElementById('pasteCodeButton').addEventListener('click', async function() {
+    try {
+        const clipboardText = await navigator.clipboard.readText();
+        const [startPage, endPage] = clipboardText.split(':'); // Split the code by ':' to extract start and end pages
+        if (startPage && endPage) {
+
+            fetchWikiPage(startPage, false, true, document.getElementById('startPage')); // Check for redirects
+            fetchWikiPage(endPage, false, true, document.getElementById('endPage')); // Check for redirects
+
+            document.getElementById('startPage').value = startPage;
+            document.getElementById('endPage').value = endPage;
+            updateGameCode(); // Update the game code display
+            showNotification('Code pasted from clipboard!');
+        } else {
+            showNotification('Invalid game code!');
+        }
+    } catch (err) {
+        console.error('Failed to read from clipboard: ', err);
+    }
+});
+
+// Automatically update the game code when start or end pages are changed
+document.getElementById('startPage').addEventListener('input', updateGameCode);
+document.getElementById('endPage').addEventListener('input', updateGameCode);
 
 // Attach event listener to "Donate" button
 document.getElementById('donateButton').addEventListener('click', () => {
