@@ -238,6 +238,8 @@ function resetGame() {
 function loadPageContentOnRefresh() {
     window.history.replaceState({}, document.title, "/");
 
+    console.log(`Start Page: ${document.getElementById('startPage').value} > End Page: ${document.getElementById('endPage').value}`);
+
     // Call the update function initially to set the default value
     if (document.getElementById('startPage').value === '') {
         document.getElementById('startPage').value = startPageInit;
