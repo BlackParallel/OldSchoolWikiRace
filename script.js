@@ -1,4 +1,4 @@
-let website = 'https://oldschool.runescape.wiki/wiki/Main_Page'; //oldschoolwikirace.org
+let website = 'https://oldschoolwikirace.org'; //oldschoolwikirace.org
 
 let visitedPages = [];
 
@@ -614,10 +614,6 @@ document.getElementById('pasteCodeButton').addEventListener('click', async funct
         console.error('Failed to read from clipboard: ', err);
     }
 });
-
-// Automatically update the game code when start or end pages are changed
-//document.getElementById('startPage').addEventListener('input', updateGameCode);
-//document.getElementById('endPage').addEventListener('input', updateGameCode);
 
 // Attach event listener to "Donate" button
 document.getElementById('donateButton').addEventListener('click', () => {
