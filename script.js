@@ -230,7 +230,7 @@ function loadPageContentOnRefresh() {
     console.log(`Redirected to: ${document.title}`);
 
     // Remove http & https from the URL:
-    const url = "https://example.com";
+    const url = window.location.href;
     const cleanUrl = url.replace(/^https?:\/\//, '');
     console.log(cleanUrl);  // Output: "example.com"
 }
