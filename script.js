@@ -328,8 +328,7 @@ function fetchRandomStartPage() {
     fetchRandomPage()
         .then(randomPage => {
             fetchWikiPage(randomPage, false, true, document.getElementById('startPage')); // Check for redirects
-        })
-        .then((randomPage) => {
+            startPage = randomPage; // Update the start page
             updateGameCode(randomPage, endPage); // Update the game code display
             console.log(`${randomPage} : ${endPage}`);
         })
@@ -341,8 +340,7 @@ function fetchRandomEndPage() {
     fetchRandomPage()
         .then(randomPage => {
             fetchWikiPage(randomPage, false, true, document.getElementById('endPage')); // Check for redirects
-        })
-        .then((randomPage) => {
+            endPage = randomPage;
             updateGameCode(startPage, randomPage); // Update the game code display
             console.log(`${startPage} : ${randomPage}`);
         })
