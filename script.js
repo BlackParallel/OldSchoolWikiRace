@@ -624,6 +624,16 @@ document.getElementById('pasteCodeButton').addEventListener('click', async funct
     }
 });
 
+// Event listener to copy the game code to clipboard
+document.getElementById('copyURLButton').addEventListener('click', function() {
+    const newUrl = `${website}/?start=${encodeURIComponent(startPage)}&end=${encodeURIComponent(endPage)}`;
+    navigator.clipboard.writeText(newUrl).then(() => {
+        showNotification('Code copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+});
+
 // Attach event listener to "Donate" button
 document.getElementById('donateButton').addEventListener('click', () => {
     window.open('https://buy.stripe.com/cN2cP64dI2gH08w6oo', '_blank');
