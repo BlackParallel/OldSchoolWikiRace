@@ -250,7 +250,7 @@ function loadPageContentOnRefresh() {
     else {
         document.getElementById('endPage').value = endPage;
     }
-    updateGameCode();
+    updateGameCode(startPage, endPage);
 
     // Remove http & https from the URL:
     const url = window.location.href;
