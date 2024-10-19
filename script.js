@@ -324,9 +324,10 @@ function fetchRandomStartPage() {
         .then(randomPage => {
             fetchWikiPage(randomPage, false, true, document.getElementById('startPage')); // Check for redirects
         })
+        .then(() => {
+            updateGameCode(); // Update the game code display
+        })
         .catch(error => console.error('Error fetching random start page:', error));
-        
-    updateGameCode(); // Update the game code display
 }
 
 // Function to fetch a random page and update the end page input
@@ -335,9 +336,10 @@ function fetchRandomEndPage() {
         .then(randomPage => {
             fetchWikiPage(randomPage, false, true, document.getElementById('endPage')); // Check for redirects
         })
+        .then(() => {
+            updateGameCode(); // Update the game code display
+        })
         .catch(error => console.error('Error fetching random end page:', error));
-        
-    updateGameCode(); // Update the game code display
 }
 
 // Function to check if a title is valid
