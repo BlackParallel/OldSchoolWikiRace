@@ -54,6 +54,7 @@ function fetchWikiPage(pageTitle, incrementClick = true, testingForRedirect = fa
                 //contentDiv.innerHTML = `<p>Page not found: ${pageTitle}</p>`;
                 showNotification('Page not found!');
                 console.log(`Page not found: ${pageTitle}`);
+                resetGame();
                 return;
             } else {
                 // Check if the page is a redirect
@@ -517,6 +518,9 @@ document.getElementById('startButton').addEventListener('click', () => {
         startPage = document.getElementById('startPage').value.trim();
         endPage = document.getElementById('endPage').value.trim();
         
+        fetchWikiPage(startPage, false, true, document.getElementById('startPage')); // Check for redirects
+        fetchWikiPage(endPage, false, true, document.getElementById('endPage')); // Check for redirects
+
         if (startButt.textContent === 'Start Game') {           
             startButt.textContent = 'Main Menu';
         }
