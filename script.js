@@ -238,28 +238,18 @@ function resetGame() {
 function loadPageContentOnRefresh() {
     window.history.replaceState({}, document.title, "/");
 
-    console.log(`Start Page: ${document.getElementById('startPage').value} > End Page: ${document.getElementById('endPage').value}`);
+    sp = document.getElementById('startPage').value;
+    ep = document.getElementById('endPage').value;
 
     // Call the update function initially to set the default value
-    if (document.getElementById('startPage').value === '') {
-        document.getElementById('startPage').value = startPageInit;
-        console.log(`blank to: ${document.getElementById('startPage').value}`);
-    } else {
-        document.getElementById('startPage').value = startPage;
-        console.log(`value to: ${document.getElementById('startPage').value}`);
-    }
-    if (document.getElementById('endPage').value === '') {
-        document.getElementById('endPage').value = endPageInit;
-        console.log(`blank to: ${document.getElementById('endPage').value}`);
-    }
-    else {
-        document.getElementById('endPage').value = endPage;
-        console.log(`value to: ${document.getElementById('endPage').value}`);
-    }
+    if (sp === '') {
+        sp = startPageInit;
+    } else {    }
+    if (ep === '') {
+        ep = endPageInit;
+    } else {    }
     
-    console.log(`Start Page: ${document.getElementById('startPage').value} > End Page: ${document.getElementById('endPage').value}`);
-
-    updateGameCode(startPage, endPage);
+    updateGameCode(sp, ep);
 
     // Remove http & https from the URL:
     const url = window.location.href;
