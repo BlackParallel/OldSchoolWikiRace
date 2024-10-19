@@ -12,9 +12,11 @@ let totalSeconds = 0;
 // List of prefixes to filter out
 const invalidPrefixes = [
     'RuneScape:',
+    'RuneScape talk:',
     'Exchange:', 
     'Update:',
     'Poll:',
+    'Forum:',
     'File:',
     'Module:',
     'Template:',
@@ -30,6 +32,7 @@ const invalidPrefixes = [
     'Transcript talk:',
     'MediaWiki:',
     'Property:',
+    'Special:',
     'Clue scroll'
 ];
 // ################################################################################ WIKI FETCH
@@ -350,7 +353,7 @@ function isValidTitle(title) {
 
 // Function to fetch a valid random page
 async function fetchRandomPage() {
-    randomPage = '';
+    let randomPage = '';
     toggleButtons(true); // Disable buttons while fetching
     while (true) { // Keep trying until we get a valid title
         const response = await fetch('https://oldschool.runescape.wiki/api.php?action=query&list=random&rnlimit=1&format=json');
