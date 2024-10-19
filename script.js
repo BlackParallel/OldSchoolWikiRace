@@ -312,7 +312,7 @@ function toggleButtons(disable) {
         startButt = document.getElementById('startButton');
         copyButt = document.getElementById('copyCodeButton');
         if (startButt === button && startButt.textContent == 'Main Menu') { }
-        else if (copyButt === button && copyButt.textContent == 'Copy Code') { }
+        else if (copyButt === button && startButt.textContent == 'Main Menu' && copyButt.textContent == 'Copy Code') { }
         else { button.disabled = disable; } // Disable or enable based on the parameter
         
     });
@@ -325,6 +325,8 @@ function fetchRandomStartPage() {
             fetchWikiPage(randomPage, false, true, document.getElementById('startPage')); // Check for redirects
         })
         .catch(error => console.error('Error fetching random start page:', error));
+        
+    updateGameCode(); // Update the game code display
 }
 
 // Function to fetch a random page and update the end page input
@@ -334,6 +336,8 @@ function fetchRandomEndPage() {
             fetchWikiPage(randomPage, false, true, document.getElementById('endPage')); // Check for redirects
         })
         .catch(error => console.error('Error fetching random end page:', error));
+        
+    updateGameCode(); // Update the game code display
 }
 
 // Function to check if a title is valid
@@ -353,7 +357,6 @@ async function fetchRandomPage() {
             break; // Break the loop if the title is valid
         }
     }
-    updateGameCode(); // Update the game code display
 
     toggleButtons(false); // Re-enable buttons after fetching
     return randomPage; // Return if the title is valid
