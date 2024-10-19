@@ -15,6 +15,7 @@ const invalidPrefixes = [
     'RuneScape talk:',
     'Exchange:', 
     'Update:',
+    'Update talk:',
     'Poll:',
     'Forum:',
     'File:',
@@ -328,8 +329,9 @@ function fetchRandomStartPage() {
         .then(randomPage => {
             fetchWikiPage(randomPage, false, true, document.getElementById('startPage')); // Check for redirects
         })
-        .then(() => {
+        .then((randomPage) => {
             updateGameCode(randomPage, endPage); // Update the game code display
+            console.log(`${randomPage} : ${endPage}`);
         })
         .catch(error => console.error('Error fetching random start page:', error));
 }
@@ -340,8 +342,9 @@ function fetchRandomEndPage() {
         .then(randomPage => {
             fetchWikiPage(randomPage, false, true, document.getElementById('endPage')); // Check for redirects
         })
-        .then(() => {
+        .then((randomPage) => {
             updateGameCode(startPage, randomPage); // Update the game code display
+            console.log(`${startPage} : ${randomPage}`);
         })
         .catch(error => console.error('Error fetching random end page:', error));
 }
