@@ -238,29 +238,24 @@ function resetGame() {
 }
 
 function loadPageContentOnRefresh() {
-    // Remove http & https from the URL:
-    const url = window.location.href;
-    const cleanUrl = url.replace(/^https?:\/\//, ''); // can remove
-    const basePath = window.location.origin + '/';
-    const pagePath = cleanUrl.replace(basePath, ''); // This will capture "Bucket:Coins" if present
-    
-    // If there is text after the base URL, split by ':'
-    if (pagePath && pagePath.includes(':')) {
-        const [sp, ep] = pagePath.split(':');
-        
-        // Set the start and end pages based on the parsed values
-        document.getElementById('startPage').value = sp;
-        document.getElementById('endPage').value = ep;
+    const params = new URLSearchParams(window.location.search);
+    let sp = params.get('start'); // Get 'start' from query params
+    let ep = params.get('end');   // Get 'end' from query params
 
-        // Update the game code based on the extracted values
-        updateGameCode(sp, ep);
-    } else {
-        // If no text after '.org/', use default values or handle empty values
-        sp = document.getElementById('startPage').value || startPageInit;
-        ep = document.getElementById('endPage').value || endPageInit;
-
-        updateGameCode(sp, ep);
+    // If query params are not present, use the default values
+    if (!sp) {
+        sp = startPageInit;
     }
+    if (!ep) {
+        ep = endPageInit;
+    }
+
+    // Set the input values
+    document.getElementById('startPage').value = sp;
+    document.getElementById('endPage').value = ep;
+
+    // Update the game code with the new values
+    updateGameCode(sp, ep);
 
     
     window.history.replaceState({}, document.title, "/");
@@ -559,12 +554,13 @@ document.getElementById('restartOverlayButton').addEventListener('click', () => 
 });
 
 document.getElementById('shareOverlayButton').addEventListener('click', function() {
+    const newUrl = `/?start=${encodeURIComponent(startPage)}&end=${encodeURIComponent(endPage)}`;
     const clickCounter = document.getElementById('clickCounter').textContent;
     const clickAmount = clickCounter === "1" ? "click" : "clicks";
     const sharedMessage =   `**Old School Wiki Race Results:**\n` + 
                             `**${startPage} → ${endPage}**\n` +
                             `I managed in **${clickCounter}** ${clickAmount} and a time of **${formatTime(totalSeconds)}!** Can you beat me?\n` +
-                            `${website}`;
+                            `${website}${newUrl}`;
     navigator.clipboard.writeText(sharedMessage);
     
     // Show notification
@@ -579,6 +575,7 @@ document.getElementById('shareOverlayButton').addEventListener('click', function
 });
 
 document.getElementById('shareRouteOverlayButton').addEventListener('click', function() {
+    const newUrl = `/?start=${encodeURIComponent(startPage)}&end=${encodeURIComponent(endPage)}`;
     const clickCounter = document.getElementById('clickCounter').textContent;
     const clickAmount = clickCounter === "1" ? "click" : "clicks";
     const sharedMessage =   `**Old School Wiki Race Results:**\n` + 
@@ -586,7 +583,7 @@ document.getElementById('shareRouteOverlayButton').addEventListener('click', fun
                             `I managed in **${clickCounter}** ${clickAmount} and a time of **${formatTime(totalSeconds)}!** Can you beat me?\n` +
                             `**Route:**\n` +
                             `${displayRoute(false)}\n` +
-                            `${website}`;
+                            `${website}${newUrl}`;
     navigator.clipboard.writeText(sharedMessage);
 
     showNotification('Route copied to clipboard!');
