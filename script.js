@@ -238,25 +238,32 @@ function resetGame() {
 }
 
 function loadPageContentOnRefresh() {
-    window.history.replaceState({}, document.title, "/");
-
-    sp = document.getElementById('startPage').value;
-    ep = document.getElementById('endPage').value;
-
-    // Call the update function initially to set the default value
-    if (sp === '') {
-        sp = startPageInit;
-    } else {    }
-    if (ep === '') {
-        ep = endPageInit;
-    } else {    }
-    
-    updateGameCode(sp, ep);
-
     // Remove http & https from the URL:
     const url = window.location.href;
-    const cleanUrl = url.replace(/^https?:\/\//, '');
-    console.log(cleanUrl);
+    const cleanUrl = url.replace(/^https?:\/\//, ''); // can remove
+    const basePath = window.location.origin + '/';
+    const pagePath = cleanUrl.replace(basePath, ''); // This will capture "Bucket:Coins" if present
+    
+    // If there is text after the base URL, split by ':'
+    if (pagePath && pagePath.includes(':')) {
+        const [sp, ep] = pagePath.split(':');
+        
+        // Set the start and end pages based on the parsed values
+        document.getElementById('startPage').value = sp;
+        document.getElementById('endPage').value = ep;
+
+        // Update the game code based on the extracted values
+        updateGameCode(sp, ep);
+    } else {
+        // If no text after '.org/', use default values or handle empty values
+        sp = document.getElementById('startPage').value || startPageInit;
+        ep = document.getElementById('endPage').value || endPageInit;
+
+        updateGameCode(sp, ep);
+    }
+
+    
+    window.history.replaceState({}, document.title, "/");
 }
 
 // Function to increment the click counter
