@@ -168,6 +168,7 @@ function fetchWikiPage(pageTitle, incrementClick = true, testingForRedirect = fa
 
                 // Add current page to visited pages
                 if (incrementClick) {
+                    pageTitle = decodeURIComponent(pageTitle)
                     visitedPages.push(pageTitle);
                 }
                 // Make internal links clickable
@@ -178,6 +179,7 @@ function fetchWikiPage(pageTitle, incrementClick = true, testingForRedirect = fa
                     top: 0
                 });
 
+                //decodeURIComponent(pageTitle)
                 // Check if the user has won
                 if (pageTitle.toLowerCase().replace(/_/g, ' ') === endPage.toLowerCase().replace(/_/g, ' ')) {
                     displayWinMessage(); // Show the win message
@@ -231,25 +233,24 @@ function resetGame() {
     toggleButtons(false); // Re-enable buttons
     toggleBackButton();
     stopTimer();
-    startPage = startPageInit;
-    endPage = endPageInit;
+    //startPage = startPageInit;
+    //endPage = endPageInit;
 }
 
 function loadPageContentOnRefresh() {
     window.history.replaceState({}, document.title, "/");
-    console.log(`Redirected to: ${document.title}`);
 
     // Call the update function initially to set the default value
     if (document.getElementById('startPage').value === '') {
-        document.getElementById('startPage').value = startPage;
-    } else {
         document.getElementById('startPage').value = startPageInit;
+    } else {
+        document.getElementById('startPage').value = startPage;
     }
     if (document.getElementById('endPage').value === '') {
-        document.getElementById('endPage').value = endPage;
+        document.getElementById('endPage').value = endPageInit;
     }
     else {
-        document.getElementById('endPage').value = endPageInit;
+        document.getElementById('endPage').value = endPage;
     }
     updateGameCode();
 
@@ -267,7 +268,7 @@ function incrementClickCounter() {
     clickCounter.innerText = currentCount; // Update the displayed count
 }
 
-// ################################################################################ ENDGAME WIN OVERLAY
+// ################################################################################ WIN OVERLAY
 
 // Function to show the game win message
 function displayWinMessage() {
@@ -323,19 +324,6 @@ function getDailySeed() {
 }
 
 // ################################################################################ RANDOM PAGE FETCH
-
-// Function to disable buttons
-function toggleButtons(disable) {
-    const buttons = document.querySelectorAll('#headerContainer .inputButton'); // Select buttons in the inputContainer
-    buttons.forEach(button => {
-        startButt = document.getElementById('startButton');
-        copyButt = document.getElementById('copyCodeButton');
-        if (startButt === button && startButt.textContent == 'Main Menu') { }
-        else if (copyButt === button && startButt.textContent == 'Main Menu' && copyButt.textContent == 'Copy Code') { }
-        else { button.disabled = disable; } // Disable or enable based on the parameter
-        
-    });
-}
 
 // Function to fetch a random page and update the start page input
 function fetchRandomStartPage() {
@@ -471,6 +459,20 @@ function showNotification(message) {
     }, 2000);
 }
 
+// Function to disable buttons
+function toggleButtons(disable) {
+    const buttons = document.querySelectorAll('#headerContainer .inputButton'); // Select buttons in the inputContainer
+    buttons.forEach(button => {
+        startButt = document.getElementById('startButton');
+        copyButt = document.getElementById('copyCodeButton');
+        donateButt = document.getElementById('donateButton');
+        if (donateButt === button) { }
+        else if (startButt === button && startButt.textContent == 'Main Menu') { }
+        else if (copyButt === button && startButt.textContent == 'Main Menu' && copyButt.textContent == 'Copy Code') { }
+        else { button.disabled = disable; } // Disable or enable based on the parameter        
+    });
+}
+
 // ################################################################################ EVENT LISTENERS
 
 
@@ -509,7 +511,7 @@ document.getElementById('dailyButton').addEventListener('click', function() {
 document.getElementById('startButton').addEventListener('click', () => {
     startButt = document.getElementById('startButton');
     if (startButt.textContent === 'Start Game') {
-        //resetGame();
+        resetGame();
         startPage = document.getElementById('startPage').value.trim();
         endPage = document.getElementById('endPage').value.trim();
         
