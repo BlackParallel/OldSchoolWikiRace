@@ -220,13 +220,13 @@ function updateURL(pageTitle) {
 
 function resetGame() {
     document.getElementById('clickCounter').innerText = '0';
+    document.getElementById('timerCounter').textContent = '00:00';
     visitedPages = [];
     loadPageContentOnRefresh();
     document.getElementById('pageContent').innerHTML = '';
     toggleButtons(false); // Re-enable buttons
     toggleBackButton();
     stopTimer();
-    document.getElementById('timerCounter').textContent = '00:00';
     startPage = '';
     endPage = '';
 }
@@ -236,7 +236,7 @@ function loadPageContentOnRefresh() {
     console.log(`Redirected to: ${document.title}`);
 
     // Call the update function initially to set the default value
-    updateGameCode();
+    //updateGameCode();
 
     // Remove http & https from the URL:
     const url = window.location.href;
@@ -329,7 +329,7 @@ function fetchRandomStartPage() {
             fetchWikiPage(randomPage, false, true, document.getElementById('startPage')); // Check for redirects
         })
         .then(() => {
-            updateGameCode(); // Update the game code display
+            updateGameCode(randomPage, endPage); // Update the game code display
         })
         .catch(error => console.error('Error fetching random start page:', error));
 }
@@ -341,7 +341,7 @@ function fetchRandomEndPage() {
             fetchWikiPage(randomPage, false, true, document.getElementById('endPage')); // Check for redirects
         })
         .then(() => {
-            updateGameCode(); // Update the game code display
+            updateGameCode(startPage, randomPage); // Update the game code display
         })
         .catch(error => console.error('Error fetching random end page:', error));
 }
@@ -438,7 +438,7 @@ function stopTimer() {
 // ################################################################################ GAME CODE
 
 // Function to update the code input based on start and end pages
-function updateGameCode() {
+function updateGameCode(startPage, endPage) {
     //const startPage = document.getElementById('startPage').value;
     //const endPage = document.getElementById('endPage').value;
     const gameCode = `${startPage}:${endPage}`;
@@ -587,7 +587,7 @@ document.getElementById('pasteCodeButton').addEventListener('click', async funct
 
             document.getElementById('startPage').value = startPage;
             document.getElementById('endPage').value = endPage;
-            updateGameCode(); // Update the game code display
+            updateGameCode(startPage, endPage); // Update the game code display
             showNotification('Code pasted from clipboard!');
         } else {
             showNotification('Invalid game code!');
