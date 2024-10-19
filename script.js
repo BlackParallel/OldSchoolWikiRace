@@ -20,6 +20,7 @@ const invalidPrefixes = [
     'Template:',
     'Category:',
     'Calculator:',
+    'Calculator talk:',
     'Map:',
     'Music:',
     'User:',
@@ -435,8 +436,8 @@ function stopTimer() {
 
 // Function to update the code input based on start and end pages
 function updateGameCode() {
-    const startPage = document.getElementById('startPage').value;
-    const endPage = document.getElementById('endPage').value;
+    //const startPage = document.getElementById('startPage').value;
+    //const endPage = document.getElementById('endPage').value;
     const gameCode = `${startPage}:${endPage}`;
     document.getElementById('codeInput').value = gameCode;
 }

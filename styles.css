@@ -378,8 +378,13 @@ body {
     font-weight: bold;     /* Makes the counter stand out */
     align-items: center;
     justify-content: center;
-    width: 60px; /* Adjust based on your expected timer length (e.g., '99:59') */
     text-align: center; /* Optional: Center the timer text */
+}
+#clickCounter {
+    width: 30px; /* Adjust based on your expected timer length (e.g., '99:59') */
+}
+#timerCounter {
+    width: 50px; /* Adjust based on your expected timer length (e.g., '99:59') */
 }
 
 
