@@ -553,7 +553,7 @@ document.getElementById('restartOverlayButton').addEventListener('click', () => 
 });
 
 document.getElementById('shareOverlayButton').addEventListener('click', function() {
-    const newUrl = `/?start=${encodeURIComponent(startPage)}&end=${encodeURIComponent(endPage)}`;
+    const newUrl = `/?start=${startPage}&end=${endPage}`;
     const clickCounter = document.getElementById('clickCounter').textContent;
     const clickAmount = clickCounter === "1" ? "click" : "clicks";
     const sharedMessage =   `**Old School Wiki Race Results:**\n` + 
