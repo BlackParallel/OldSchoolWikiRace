@@ -226,15 +226,12 @@ function resetGame() {
     document.getElementById('clickCounter').innerText = '0';
     document.getElementById('timerCounter').textContent = '00:00';
     visitedPages = [];
-    loadPageContentOnRefresh();
+    //loadPageContentOnRefresh();
     document.getElementById('pageContent').innerHTML = '';
     toggleButtons(false); // Re-enable buttons
     toggleBackButton();
     stopTimer();
-    // mainmenu > startgame
     document.getElementById('startButton').textContent = 'Start Game'
-    //startPage = startPageInit;
-    //endPage = endPageInit;
 }
 
 function loadPageContentOnRefresh() {
@@ -464,7 +461,7 @@ function showNotification(message) {
 
 // Function to disable buttons
 function toggleButtons(disable) {
-    const buttons = document.querySelectorAll('#headerContainer .inputButton'); // Select buttons in the inputContainer
+    const buttons = document.querySelectorAll('#headerContainer .inputButton, #headerContainer .inputField'); // Select buttons and input fields in the headerContainer
     buttons.forEach(button => {
         startButt = document.getElementById('startButton');
         copyButt = document.getElementById('copyCodeButton');
