@@ -227,7 +227,7 @@ function resetGame() {
 
 function loadPageContentOnRefresh() {
     window.history.replaceState({}, document.title, "/");
-    console.log(`Redirected to: index.html`);
+    console.log(`Redirected to: ${document.title}`);
 }
 
 // Function to increment the click counter
