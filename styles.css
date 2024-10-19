@@ -287,6 +287,9 @@ body {
     gap: 2px;                /* Adds space between the items */
     flex-wrap: wrap;          /* Makes sure the items wrap to the next line on smaller screens */
 }
+.inputMargin #copyCodeButton {
+    margin-right: 0px;
+}
 
 .inputField 
 {    

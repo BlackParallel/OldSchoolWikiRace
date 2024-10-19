@@ -521,6 +521,8 @@ document.getElementById('startButton').addEventListener('click', () => {
             startButt.textContent = 'Main Menu';
         }
         
+        updateGameCode(startPage, endPage); // Update the game code display
+
         toggleButtons(true); // Disable buttons
         
         if (startPage) {
