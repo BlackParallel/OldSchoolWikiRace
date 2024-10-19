@@ -237,6 +237,8 @@ function loadPageContentOnRefresh() {
     console.log(`Redirected to: ${document.title}`);
 
     // Call the update function initially to set the default value
+    document.getElementById('startPage').value = startPage;
+    document.getElementById('endPage').value = endPage;
     updateGameCode();
 
     // Remove http & https from the URL:
