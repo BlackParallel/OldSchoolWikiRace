@@ -302,6 +302,12 @@ body {
     border: 2px solid #94856D; /* Added border with color */
     border-radius: 5px;
     box-sizing: border-box; /* Ensures border and padding are included in the element's width/height */
+    cursor: text; /* Ensure the cursor is set to text input (caret) */
+    outline: none; /* Remove the default highlight when the input is focused */
+}
+.inputField:focus {
+    outline: none; /* Prevent any highlighting when the input field is clicked */
+    background-color: #E2DBC8; /* Maintain the background color on focus */
 }
 
 /* Optional: Close button styling */
