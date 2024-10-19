@@ -237,7 +237,7 @@ function loadPageContentOnRefresh() {
     console.log(`Redirected to: ${document.title}`);
 
     // Call the update function initially to set the default value
-    //updateGameCode();
+    updateGameCode();
 
     // Remove http & https from the URL:
     const url = window.location.href;
