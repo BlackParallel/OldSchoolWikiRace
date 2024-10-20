@@ -622,8 +622,8 @@ document.getElementById('endPage').addEventListener('input', function(event) {
 document.addEventListener('click', function(event) {
     const startSearchBox = document.getElementById('startPage');
     const startDropdown = document.getElementById('startPageSuggestions');
-    const endSearchBox = document.getElementById('startPage');
-    const endDropdown = document.getElementById('startPageSuggestions');
+    const endSearchBox = document.getElementById('endPage');
+    const endDropdown = document.getElementById('endPageSuggestions');
     
     // Check if the clicked element is not the search box or dropdown
     if (!startSearchBox.contains(event.target) && 
