@@ -226,12 +226,13 @@ function processLinks(contentDiv) {
             fetchWikiPage(pageTitle); // Fetch the new page content
             incrementClickCounter(); // Increment click counter
         });
-
-        /*
-        console.log("PAGETITLE: " + pageTitle);
+        
         // Check if the link has an invalid prefix (don't remove File: links else image wont load)
         const isValid = !invalidPrefixes.some(prefix => pageTitle.startsWith(prefix)) && !pageTitle.startsWith('File:');
+        console.log("PAGETITLE: " + pageTitle + ': ' + isValid);
 
+        /*
+        
         if (isValid) {
             link.addEventListener('click', (event) => {
                 event.preventDefault(); // Prevent default navigation
