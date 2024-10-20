@@ -209,6 +209,9 @@ body {
     max-width: 100%;
     height: auto;
 }
+#pageContent .infobox-image {
+    display: inline-block;
+}
 
 
 /* #################### Table of Contents #################### */
