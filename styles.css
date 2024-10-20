@@ -424,7 +424,7 @@ h1::after, h2::after {
     margin-top: 0px;
     margin-bottom: 16px;
     width: 100%;
-    position: absolute;
+    position: relative;
     left: 0;
 }
 /* Prevent the ::after pseudo-element for h1 and h2 inside any .toc ancestor */
