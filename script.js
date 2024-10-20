@@ -220,6 +220,7 @@ function processLinks(contentDiv) {
     internalLinks.forEach(link => {
         const pageTitle = link.getAttribute('href').substring(3); // Remove "/w/" to get the page title
 
+        console.log("PAGETITLE: " + pageTitle);
         // Check if the link has an invalid prefix (don't remove File: links else image wont load)
         const isValid = !invalidPrefixes.some(prefix => pageTitle.startsWith(prefix)) && !pageTitle.startsWith('File:');
 
