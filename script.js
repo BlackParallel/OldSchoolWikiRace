@@ -172,7 +172,7 @@ function fetchWikiPage(pageTitle, incrementClick = true, testingForRedirect = fa
                     visitedPages.push(pageTitle);
                 }
                 // Make internal links clickable
-                makeLinksClickable(contentDiv);
+                processLinks(contentDiv);
                 
                 // Scroll to the top after content is loaded
                 contentDiv.scrollTo({
@@ -206,9 +206,16 @@ function toggleBackButton() {
 }
 
 // Function to make internal links clickable
-function makeLinksClickable(contentDiv) {
-    const links = contentDiv.querySelectorAll('a[href^="/w/"]'); // Select internal links
-    links.forEach(link => {
+function processLinks(contentDiv) {
+    // Remove external links
+    const externalLinks = contentDiv.querySelectorAll('a[href^="http"], a[href^="https"]');
+    externalLinks.forEach(link => {
+        const textNode = document.createTextNode(link.textContent);
+        link.replaceWith(textNode); // Replace the <a> tag with its text content
+    });
+
+    const internalLinks = contentDiv.querySelectorAll('a[href^="/w/"]'); // Select internal links
+    internalLinks.forEach(link => {
         const pageTitle = link.getAttribute('href').substring(3); // Remove "/w/" to get the page title
 
         link.addEventListener('click', (event) => {
@@ -645,6 +652,7 @@ document.getElementById('endPage').addEventListener('focus', function() {
 });
 
 
+// ################################################################################ Buttons
 
 // Attach event listener to "Close" button
 document.getElementById('restartOverlayButton').addEventListener('click', () => {
