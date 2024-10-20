@@ -628,7 +628,7 @@ document.getElementById('pasteCodeButton').addEventListener('click', async funct
 document.getElementById('copyURLButton').addEventListener('click', function() {
     sp = document.getElementById('startPage').value;
     ep = document.getElementById('endPage').value;
-    const newUrl = `${website}/?start=${encodeURIComponent(sp)}&end=${encodeURIComponent(sp)}`;
+    const newUrl = `${website}/?start=${encodeURIComponent(sp)}&end=${encodeURIComponent(ep)}`;
     navigator.clipboard.writeText(newUrl).then(() => {
         showNotification('Code copied to clipboard!');
     }).catch(err => {
