@@ -197,10 +197,17 @@ body {
 }
 #pageContent .infobox {
     z-index: 500; /* Above other content */
+    max-width: 50%;
 }
 #pageContent .infobox .mw-file-element{
     margin: 0 auto;
     vertical-align: middle;
+}
+#pageContent .infobox th {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 

@@ -231,8 +231,8 @@ function processLinks(contentDiv) {
         const isValid = !invalidPrefixes.some(prefix => pageTitle.startsWith(prefix)) && !pageTitle.startsWith('File:');
         console.log("PAGETITLE: " + pageTitle + ': ' + isValid);
 
+
         /*
-        
         if (isValid) {
             link.addEventListener('click', (event) => {
                 event.preventDefault(); // Prevent default navigation
