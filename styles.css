@@ -3,7 +3,7 @@
     --bg-dark-color: #94856D;
     --hover-color: #6f604d;
     --text-color: #4d4d4d;
-    --hover-color: #e74c3c;
+    --disabled-color: #cccccc;
 }
 
 /* #################### Body #################### */
@@ -301,10 +301,10 @@ body {
     background-color: #E2DBC8;
 }
 .inputField:disabled {
-    background-color: #E2DBC8;
-    color: #6f604d;
+    background-color: #cccccc;
+    color: #4d4d4d;
     cursor: default;
-    /*opacity: 0.6; /* Make the button slightly transparent */
+    opacity: 0.8; /* Make the button slightly transparent */
 }
 
 .inputButton {
@@ -321,10 +321,10 @@ body {
     background-color: #6f604d;
 }
 .inputButton:disabled {
-    background-color: #E2DBC8;
-    color: #6f604d;
+    background-color: #cccccc;
+    color: #4d4d4d;
     cursor: default;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 .inputButton:disabled:hover {
     background-color: #E2DBC8;
