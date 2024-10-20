@@ -245,6 +245,12 @@ body {
     margin: 0 auto;
 }
 
+/* For extra page images */
+#pageContent .rsw-synced-switch-item {
+    display: none;
+}#pageContent .rsw-synced-switch-item .showing {
+    display: inline-block;
+}
 
 /* #################### Header Container #################### */
 
