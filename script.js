@@ -198,10 +198,12 @@ function fetchWikiPage(pageTitle, incrementClick = true, testingForRedirect = fa
 
 function toggleBackButton() {
     const backButton = document.getElementById('backButton');
-    if (visitedPages.length > 1) {
-        backButton.classList.remove('hidden');  // Show button if there are pages to go back to
-    } else {
-        backButton.classList.add('hidden');  // Hide button if there are no previous pages
+    if (backButton) {
+        if (visitedPages.length > 1) {
+            backButton.classList.remove('hidden');  // Show button if there are pages to go back to
+        } else {
+            backButton.classList.add('hidden');  // Hide button if there are no previous pages
+        }
     }
 }
 
