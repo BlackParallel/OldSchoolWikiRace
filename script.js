@@ -220,6 +220,14 @@ function processLinks(contentDiv) {
     internalLinks.forEach(link => {
         const pageTitle = link.getAttribute('href').substring(3); // Remove "/w/" to get the page title
 
+
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default navigation
+            fetchWikiPage(pageTitle); // Fetch the new page content
+            incrementClickCounter(); // Increment click counter
+        });
+
+        /*
         console.log("PAGETITLE: " + pageTitle);
         // Check if the link has an invalid prefix (don't remove File: links else image wont load)
         const isValid = !invalidPrefixes.some(prefix => pageTitle.startsWith(prefix)) && !pageTitle.startsWith('File:');
@@ -234,9 +242,9 @@ function processLinks(contentDiv) {
             // Disable invalid links by replacing them with plain text
             const textNode = document.createTextNode(link.textContent);
             link.replaceWith(textNode); // Replace the <a> tag with its text content
-        }
+        }*/
     });
-}
+}//mw-kartographer-link
 
 function updateURL(pageTitle) {
     const newUrl = `${window.location.origin}${window.location.pathname}?page=${pageTitle}`;
