@@ -90,7 +90,7 @@
 
 /* Apply a similar background to the content area */
 #pageContent {
-    /*position: absolute; /* Allows it to be positioned relative to the body */
+    position: absolute; /* Allows it to be positioned relative to the body */
     /*top: 120px; /* Start below the fixed elements */
     left: 8px;
     right: 8px;
