@@ -1,6 +1,7 @@
 :root {
     --bg-color: #C0A886;
-    --bg_contents:#B8A282;
+    --bg-contents:#B8A282;
+    --bg-table-color: #D8CCB5;
     --bg-light-color: #E2DBC8;
     --bg-border-color: #94856D;
     --hover-color: #6f604d;
@@ -75,8 +76,8 @@ body {
 /* #################### Suggestions #################### */
 .suggestions {
     position: absolute;
-    background-color: #C0A886;
-    border: 1px solid #6f604d;
+    background-color: var(--bg-table-color);
+    border: 1px solid var(--bg-border-color);
     z-index: 100;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -85,7 +86,7 @@ body {
     cursor: pointer;
 }
 .suggestion:hover {
-    background-color: #B8A282;
+    background-color: var(--bg-contents);
 }
 
 
