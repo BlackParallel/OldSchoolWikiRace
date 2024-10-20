@@ -254,7 +254,7 @@ body {
 
 /* Styling for the image */
 #headerImage {
-    width: 100px; /* Adjust size as needed */
+    width: 150px; /* Adjust size as needed */
     height: auto; /* Maintains aspect ratio */
     margin-right: 20px; /* Adds space between the image and the content */
     margin-left: 20px;
@@ -270,6 +270,7 @@ body {
         margin: 0 0 10px 0; /* Adjust margins for the image when stacked */
         content: url('osrswikiracelogo.png'); /* Non-mobile-specific image */
         content: url('osrswikiracelogomobile.png'); /* Mobile-specific image */
+        width: 300px;
      }
 }
 
