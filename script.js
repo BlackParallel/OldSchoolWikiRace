@@ -466,10 +466,12 @@ function toggleButtons(disable) {
     buttons.forEach(button => {
         startButt = document.getElementById('startButton');
         copyButt = document.getElementById('copyCodeButton');
+        copyurlButt = document.getElementById('copyURLButton');
         donateButt = document.getElementById('donateButton');
         if (donateButt === button) { }
-        else if (startButt === button && startButt.textContent == 'Main Menu') { }
-        else if (copyButt === button && startButt.textContent == 'Main Menu' && copyButt.textContent == 'Copy Code') { }
+        else if (copyurlButt === button && startButt.textContent == 'Stop Game' && copyurlButt.textContent == 'Copy URL') { }
+        else if (startButt === button && startButt.textContent == 'Stop Game') { }
+        else if (copyButt === button && startButt.textContent == 'Stop Game' && copyButt.textContent == 'Copy Code') { }
         else { button.disabled = disable; } // Disable or enable based on the parameter        
     });
 }
@@ -522,7 +524,7 @@ document.getElementById('startButton').addEventListener('click', () => {
         fetchWikiPage(endPage, false, true, document.getElementById('endPage')); // Check for redirects
 
         if (startButt.textContent === 'Start Game') {           
-            startButt.textContent = 'Main Menu';
+            startButt.textContent = 'Stop Game';
         }
         
         updateGameCode(startPage, endPage); // Update the game code display
