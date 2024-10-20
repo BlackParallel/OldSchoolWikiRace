@@ -17,11 +17,15 @@
         <img src="osrswikiracelogo.png" alt="Game Logo" id="headerImage" href="#" onclick="location.reload(); return false;">
         
         <div id="headerContent">
-            <div class="inputMargin">   
-                <input id="startPage" class="inputField" placeholder="Enter Start Page" value="Bucket">
-                <button id="randomStartButton" class="inputButton">🎲 Start Page</button>
-                <input id="endPage" class="inputField" placeholder="Enter End Page" value="Coins"></input>
-                <button id="randomEndButton" class="inputButton">🎲 End Page</button>
+            <div class="inputMargin">
+                <div>
+                    <input id="startPage" class="inputField" placeholder="Enter Start Page" value="Bucket">
+                    <button id="randomStartButton" class="inputButton">🎲 Start Page</button>
+                </div>
+                <div>
+                    <input id="endPage" class="inputField" placeholder="Enter End Page" value="Coins"></input>
+                    <button id="randomEndButton" class="inputButton">🎲 End Page</button>
+                </div>
                 <button id="randomBothButton" class="inputButton">🎲 🎲</button>
 
                 <button id="dailyButton" class="inputButton">📅 Daily Challenge</button>
@@ -30,7 +34,7 @@
                 <button id="startButton" class="inputButton" >Start Game</button>
                 <div>Clicks:</div> <div id="clickCounter">0</div>
                 <div>Time:</div> <div id="timerCounter">00:00</div> <!-- Timer added here -->
-                <div class="codeWrapper">
+                <div>
                     <span>Code:</span>
                     <input id="codeInput" class="inputField" placeholder="Game Code" readonly>
                 </div>
