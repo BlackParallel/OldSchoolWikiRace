@@ -56,7 +56,11 @@
     </div>
 
     <!-- Div to show the wiki page content -->
-    <div id="pageContent"></div>
+    <div id="pageContent">
+        <div id="backButtonOverlay">   
+            <button id="backButton" class="hidden">I got stuck let me go back</button>
+        </div>
+    </div>
 
     <!-- Message for win condition as a small overlay -->
     <div id="gameMessageOverlay" class="overlay hidden">
@@ -70,20 +74,17 @@
             </div>
             <div>
                 <button id="shareOverlayButton" class="overlayButton">
-<span title="Copy" style="font-size: .875em; margin-right: .125em; position: relative; top: -.25em; left: -.125em">
-  📄<span title="Copy" style="position: absolute; top: .25em; left: .25em">📄</span>
-</span> Results</button>
-                <button id="shareRouteOverlayButton" class="overlayButton">
-<span title="Copy" style="font-size: .875em; margin-right: .125em; position: relative; top: -.25em; left: -.125em">
-  📄<span title="Copy" style="position: absolute; top: .25em; left: .25em">📄</span>
-</span> Route</button>
+                <span title="Copy" style="font-size: .875em; margin-right: .125em; position: relative; top: -.25em; left: -.125em">
+                  📄<span title="Copy" style="position: absolute; top: .25em; left: .25em">📄</span>
+                </span> Results</button>
+                                <button id="shareRouteOverlayButton" class="overlayButton">
+                <span title="Copy" style="font-size: .875em; margin-right: .125em; position: relative; top: -.25em; left: -.125em">
+                  📄<span title="Copy" style="position: absolute; top: .25em; left: .25em">📄</span>
+                </span> Route</button>
             </div>
         </div>
     </div>
 
-    <div id="backButtonOverlay">   
-        <button id="backButton" class="hidden">I got stuck let me go back</button>
-    </div>
 
     <!-- Notification div for sharing message -->
     <div id="notification" class=""></div>
