@@ -218,11 +218,20 @@ function processLinks(contentDiv) {
     internalLinks.forEach(link => {
         const pageTitle = link.getAttribute('href').substring(3); // Remove "/w/" to get the page title
 
-        link.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent default navigation
-            fetchWikiPage(pageTitle); // Fetch the new page content
-            incrementClickCounter(); // Increment click counter
-        });
+        // Check if the link has an invalid prefix
+        const isValid = !invalidPrefixes.some(prefix => pageTitle.startsWith(prefix));
+
+        if (valid) {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default navigation
+                fetchWikiPage(pageTitle); // Fetch the new page content
+                incrementClickCounter(); // Increment click counter
+            });
+        } else {
+            // Disable invalid links by replacing them with plain text
+            const textNode = document.createTextNode(link.textContent);
+            link.replaceWith(textNode); // Replace the <a> tag with its text content
+        }
     });
 }
 
