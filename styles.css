@@ -73,9 +73,10 @@ body {
 /* #################### Suggestions #################### */
 .suggestions {
     position: absolute;
-    background-color: 94856D;
+    background-color: #94856D;
     border: 1px solid #6f604d;
     z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .suggestion {
     padding: 5px;
