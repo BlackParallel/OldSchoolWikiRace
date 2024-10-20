@@ -618,6 +618,29 @@ document.getElementById('endPage').addEventListener('input', function(event) {
             });
         }, 300);
 });
+// Assume 'searchInput' is the ID of your input and 'dropdown' is the ID of your dropdown
+document.addEventListener('click', function(event) {
+    const startSearchBox = document.getElementById('startPage');
+    const startDropdown = document.getElementById('startPageSuggestions');
+    const endSearchBox = document.getElementById('startPage');
+    const endDropdown = document.getElementById('startPageSuggestions');
+    
+    // Check if the clicked element is not the search box or dropdown
+    if (!startSearchBox.contains(event.target) && !startDropdown.contains(event.target) &&
+        !endSearchBox.contains(event.target) && !endDropdown.contains(event.target)) {
+        dropdown.style.display = 'none'; // Hide the dropdown
+    }
+});
+
+// Show dropdown when interacting with the search input
+document.getElementById('startPage').addEventListener('focus', function() {
+    document.getElementById('startPageSuggestions').style.display = 'block'; // Show dropdown on focus
+});
+// Show dropdown when interacting with the search input
+document.getElementById('endPage').addEventListener('focus', function() {
+    document.getElementById('endPageSuggestions').style.display = 'block'; // Show dropdown on focus
+});
+
 
 
 // Attach event listener to "Close" button

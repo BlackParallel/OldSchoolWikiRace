@@ -73,8 +73,8 @@ body {
 /* #################### Suggestions #################### */
 .suggestions {
     position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
+    background-color: 94856D;
+    border: 1px solid #6f604d;
     z-index: 100;
 }
 .suggestion {
@@ -82,7 +82,7 @@ body {
     cursor: pointer;
 }
 .suggestion:hover {
-    background-color: #eee;
+    background-color: #6f604d;
 }
 
 
