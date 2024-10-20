@@ -539,7 +539,8 @@ document.getElementById('startButton').addEventListener('click', () => {
 
         console.log(`Start Page: ${startPage} > End Page: ${endPage}`);
     } else {
-        location.reload();
+        //location.reload();
+        resetGame();
     }
 });
 
