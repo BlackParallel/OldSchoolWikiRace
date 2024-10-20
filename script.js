@@ -476,6 +476,21 @@ function toggleButtons(disable) {
     });
 }
 
+function updateImageSource() {
+    const img = document.getElementById('headerImage');
+    if (window.innerWidth <= 600) {
+        img.src = 'osrswikiracelogomobile.png';
+    } else {
+        img.src = 'osrswikiracelogo.png';
+    }
+}
+
+// Run on page load
+window.onload = updateImageSource;
+
+// Run on window resize
+window.onresize = updateImageSource;
+
 // ################################################################################ EVENT LISTENERS
 
 // Call this function when the page is loaded
