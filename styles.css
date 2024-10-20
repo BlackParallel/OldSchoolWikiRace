@@ -209,7 +209,7 @@ body {
     max-width: 100%;
     height: auto;
 }
-#pageContent .infobox-image {
+#pageContent .infobox-image img {
     display: inline-block;
     flex: none;
 }
