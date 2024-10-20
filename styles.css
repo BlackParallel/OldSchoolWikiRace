@@ -1,3 +1,10 @@
+:root {
+    --bg-light-color: #E2DBC8;
+    --bg-dark-color: #94856D;
+    --hover-color: #6f604d;
+    --text-color: #4d4d4d;
+    --hover-color: #e74c3c;
+}
 
 /* #################### Body #################### */
 
@@ -105,7 +112,6 @@ body {
     max-width: auto;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    border: 1px solid #d2d2d2;
     line-height: 1.5;
 
     width: 100%;
@@ -261,7 +267,6 @@ body {
     width: 100%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     border-radius: 8px;
-    border: 1px solid #d2d2d2;
     line-height: 1.5;
     z-index: 1000; /* Above other content */
 }
@@ -296,8 +301,8 @@ body {
     background-color: #E2DBC8;
 }
 .inputField:disabled {
-    background-color: #cccccc;
-    color: #666666;
+    background-color: #E2DBC8;
+    color: #6f604d;
     cursor: default;
     /*opacity: 0.6; /* Make the button slightly transparent */
 }
@@ -316,13 +321,13 @@ body {
     background-color: #6f604d;
 }
 .inputButton:disabled {
-    background-color: #cccccc;
-    color: #666666;
+    background-color: #E2DBC8;
+    color: #6f604d;
     cursor: default;
     opacity: 0.6;
 }
 .inputButton:disabled:hover {
-    background-color: #cccccc;
+    background-color: #E2DBC8;
 }
 
 .inputRight {
@@ -348,7 +353,7 @@ body {
 #backButton {
     background-color: #94856D;
     padding: 10px 20px;
-    border: 1px solid #94856D;
+    border: 0px solid #94856D;
     border-radius: 10px;
     font-family: 'PT Serif', serif;
     color: white;
@@ -395,7 +400,7 @@ h1::after, h2::after {
     content: '';
     display: block;
     height: 0.5px;
-    background-color: #CEC08D;
+    background-color: #94856D;
     margin-top: 0px;
     margin-bottom: 16px;
     width: 100%;
