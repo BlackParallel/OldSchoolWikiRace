@@ -210,8 +210,11 @@ body {
     height: auto;
 }
 #pageContent .infobox-image img {
-    display: inline-block;
-    flex: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Moves the element back by half its own width and height */
+    
 }
 
 
