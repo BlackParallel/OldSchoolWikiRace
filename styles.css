@@ -106,7 +106,8 @@
     border: 1px solid #d2d2d2;  /* Light border around the content */
     line-height: 1.5;             /* 1.5 times the font size */
 
-    margin-top: 20px; /* Adjust the margin based on your design */
+    width: 100%;                /* Let the table size itself based on content */
+    /*margin-top: 20px; /* Adjust the margin based on your design */
 }
 
 /* Remove the underline from hyperlinks */
