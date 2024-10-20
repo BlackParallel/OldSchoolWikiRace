@@ -70,6 +70,22 @@ body {
     margin-bottom: 20px;
 }
 
+/* #################### Suggestions #################### */
+.suggestions {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 100;
+}
+.suggestion {
+    padding: 5px;
+    cursor: pointer;
+}
+.suggestion:hover {
+    background-color: #eee;
+}
+
+
 /* #################### Notification #################### */
 
 #notification {

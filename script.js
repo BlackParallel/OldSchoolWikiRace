@@ -4,6 +4,7 @@ let visitedPages = [];
 
 let startPageInit = 'Bucket';
 let endPageInit = 'Coins';
+let dailySelected = false;
 
 let startPage = ''; // Stores the target start page
 let endPage = '';  // Stores the target end page
@@ -233,6 +234,7 @@ function resetGame() {
     toggleBackButton();
     stopTimer();
     document.getElementById('startButton').textContent = 'Start Game'
+    dailySelected = false;
 }
 
 function loadPageContentOnRefresh() {
@@ -259,12 +261,34 @@ function loadPageContentOnRefresh() {
     window.history.replaceState({}, document.title, "/");
 }
 
-// Function to increment the click counter
-function incrementClickCounter() {
-    const clickCounter = document.getElementById('clickCounter'); // Assuming you have an element for displaying the click count
-    let currentCount = parseInt(clickCounter.innerText) || 0; // Get current count, default to 0
-    currentCount += 1; // Increment count
-    clickCounter.innerText = currentCount; // Update the displayed count
+// ################################################################################ SEARCH WIKI
+
+let debounceTimer;
+function debounceSearch(fn, delay) {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(fn, delay);
+}
+
+function searchWiki(query, callback) {
+    fetch(`https://oldschool.runescape.wiki/api.php?action=opensearch&search=${query}&format=json&origin=*`)
+    .then(response => response.json())
+    .then(data => callback(data[1])) // data[1] contains the page titles
+    .catch(err => console.error(err));
+}
+
+function updateSuggestionDropdown(inputId, suggestions) {
+    const dropdown = document.getElementById(inputId + 'Suggestions');
+    dropdown.innerHTML = ''; // Clear previous suggestions
+    suggestions.forEach(suggestion => {
+        const div = document.createElement('div');
+        div.classList.add('suggestion');
+        div.textContent = suggestion;
+        div.onclick = function() {
+            document.getElementById(inputId).value = suggestion;
+            dropdown.innerHTML = ''; // Clear suggestions after selection
+        };
+        dropdown.appendChild(div);
+    });
 }
 
 // ################################################################################ WIN OVERLAY
@@ -485,6 +509,14 @@ function updateImageSource() {
     }
 }
 
+// Function to increment the click counter
+function incrementClickCounter() {
+    const clickCounter = document.getElementById('clickCounter'); // Assuming you have an element for displaying the click count
+    let currentCount = parseInt(clickCounter.innerText) || 0; // Get current count, default to 0
+    currentCount += 1; // Increment count
+    clickCounter.innerText = currentCount; // Update the displayed count
+}
+
 // Run on page load
 window.onload = updateImageSource;
 
@@ -566,6 +598,27 @@ document.getElementById('backButton').addEventListener('click', function() {
         fetchWikiPage(previousPage, true);
     }
 });
+
+document.getElementById('startPage').addEventListener('input', function(event) {
+    debounceSearch(
+        function() {
+            const query = event.target.value;
+            searchWiki(query, function(suggestions) {
+                updateSuggestionDropdown('startPage', suggestions);
+            });
+        }, 300); // Wait 300ms before searching
+});
+
+document.getElementById('endPage').addEventListener('input', function(event) {
+    debounceSearch(
+        function() {
+            const query = event.target.value;
+            searchWiki(query, function(suggestions) {
+                updateSuggestionDropdown('endPage', suggestions);
+            });
+        }, 300);
+});
+
 
 // Attach event listener to "Close" button
 document.getElementById('restartOverlayButton').addEventListener('click', () => {
