@@ -255,6 +255,12 @@ body {
     margin-right: 20px; /* Adds space between the image and the content */
     margin-left: 20px;
 }
+/* Hide the logo on screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    #headerImage {
+        display: none; /* This will hide the logo image */
+    }
+}
 
 /* Flex container for the content next to the image */
 #headerContent {
