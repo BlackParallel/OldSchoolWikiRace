@@ -478,7 +478,7 @@ function toggleButtons(disable) {
 
 function updateImageSource() {
     const img = document.getElementById('headerImage');
-    if (window.innerWidth <= 600) {
+    if (window.innerWidth <= 768) {
         img.src = 'osrswikiracelogomobile.png';
     } else {
         img.src = 'osrswikiracelogo.png';

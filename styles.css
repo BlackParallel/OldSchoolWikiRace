@@ -268,8 +268,8 @@ body {
 
     #headerImage {
         margin: 0 0 10px 0; /* Adjust margins for the image when stacked */
-        content: url('osrswikiracelogo.png'); /* Non-mobile-specific image */
-        content: url('osrswikiracelogomobile.png'); /* Mobile-specific image */
+        /*content: url('osrswikiracelogo.png'); /* Non-mobile-specific image */
+        /*content: url('osrswikiracelogomobile.png'); /* Mobile-specific image */
         width: 300px;
      }
 }
