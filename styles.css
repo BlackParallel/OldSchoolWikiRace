@@ -1,4 +1,16 @@
-/* The entire overlay covering the page */
+
+/* #################### Body #################### */
+
+body {
+    background-color: #C0A886;
+    font-family: 'Georgia', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* Ensure that the content is stacked vertically */
+}
+
+/* #################### Overlay #################### */
+
 .overlay {
     position: fixed;
     top: 0;
@@ -12,23 +24,20 @@
     align-items: center;
     z-index: 1000;
 }
-
-/* Style for the content inside the overlay */
 .overlay-content {
-    background-color: #E2DBC8; /* Light cream background like OSRS Wiki */
+    background-color: #E2DBC8;
     padding: 20px;
-    border: 1px solid #94856D; /* Matching the OSRS Wiki border color */
-    border-radius: 10px; /* Rounded corners */
-    max-width: 400px; /* Limit the width */
+    border: 1px solid #94856D;
+    border-radius: 10px;
+    max-width: 400px;
     width: 100%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    text-align: center; /* Center the text */
-    font-family: 'PT Serif', serif; /* Use the font from OSRS Wiki */
-    margin-bottom: 20px; /* Adds space between the two content blocks */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'PT Serif', serif;
+    margin-bottom: 20px;
 }
-/* Optional: Close button styling */
 .overlayButton {
-    background-color: #94856D; /* Similar to OSRS Wiki buttons */
+    background-color: #94856D;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -37,25 +46,24 @@
     font-size: 1em;
     margin-bottom: 10px;
 }
-/* Hover effect for the close button */
 .overlayButton:hover {
-    background-color: #6f604d; /* Darken the button slightly on hover */
+    background-color: #6f604d;
 }
 
-/* Hidden by default, we will toggle this with JS */
 .hidden {
     display: none;
 }
 
-/* Style for the win message text */
+/* Win message text */
 #congratsMessageText,
 #gameMessageText,
 #timeMessageText {
     font-size: 1.2em;
-    color: #4d4d4d; /* Darker text color for readability */
+    color: #4d4d4d;
     margin-bottom: 20px;
 }
 
+/* #################### Notification #################### */
 
 #notification {
     position: fixed;
@@ -63,7 +71,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    top: 20px; /* Adjust vertical position */
+    top: 20px;
     left: 50%;
     transform: translateX(-50%); /* Move it back to center */
     background-color: rgba(0, 0, 0, 0.8);
@@ -81,257 +89,222 @@
 }
 
 
-/*
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-*/
-
 /* #################### Page Content #################### */
 
 /* Apply a similar background to the content area */
 #pageContent {
-    /*position: absolute; /* Allows it to be positioned relative to the body */
-    /*top: 120px; /* Start below the fixed elements */
     left: 8px;
     right: 8px;
-    bottom: 8px; /* Ensure it fills the remaining space */
+    bottom: 8px;
     flex-grow: 1; /* Allow pageContent to take the remaining space */
     overflow-y: auto; /* Enables vertical scrolling */
-    background-color: #E2DBC8;  /* Creamy background */
-    padding: 20px;                /* Add some padding */
-    margin: 20px auto;            /* Center it with margins */
-    max-width: auto;              /* Keep the content in a reasonable width */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    border-radius: 8px;           /* Rounded corners like on the wiki */
-    border: 1px solid #d2d2d2;  /* Light border around the content */
-    line-height: 1.5;             /* 1.5 times the font size */
-
-    width: 100%;                /* Let the table size itself based on content */
+    background-color: #E2DBC8;
+    padding: 20px;
     box-sizing: border-box; /* Ensures padding doesn’t mess with the width */
-    /*margin-top: 20px; /* Adjust the margin based on your design */
+    margin: 20px auto;
+    max-width: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #d2d2d2;
+    line-height: 1.5;
+
+    width: 100%;
+    height: 100%;
 }
 
 /* Remove the underline from hyperlinks */
 #pageContent a {
     text-decoration: none;
 }
-
 /* Add the underline back when hovering */
 #pageContent a:hover {
     text-decoration: underline;
 }
 
-/* Ensure images and tables have some margin for better layout */
 #pageContent img {
     margin: 0px auto;
-    max-width: 100%;            /* Make sure the image doesn't exceed the width of its container */
-    height: auto;               /* Maintain the aspect ratio */
-    float: left;                /* Makes text wrap around the image on the left side */
-    margin-right: 10px;         /* Adds some space between the image and the text */
+    max-width: 100%;
+    height: auto;
+    float: left;
+    margin-right: 10px;
 }
 
-/* Style for table borders */
 #pageContent table {
-    border-collapse: collapse;  /* Ensures the borders between cells are shared */
-    margin-left: 0;              /* Remove default margin */
+    border-collapse: collapse;
+    margin-left: 0;
     margin-right: auto;
-    margin-top: 8px;           /* Center the table and add space around it */
-    margin-bottom: 8px;           /* Center the table and add space around it */
-    width: auto;                /* Let the table size itself based on content */
-    max-width: 100%;            /* Ensure the table never exceeds the content width */
-    table-layout: auto;         /* Allow the table to size columns based on content */
-    width: fit-content;         /* Let the table size itself based on content */
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: auto;
+    max-width: 100%;
+    table-layout: auto;
+    width: fit-content;
 
 }
 
-
-/* Style for the table cells */
 #pageContent td, #pageContent th {
-    padding: 5px 5px;               /* Add some padding for readability */
-    /*text-align: left;            /* Align text to the left for a cleaner look */
+    padding: 5px 5px;
 }
 #pageContent tbody td {
-    text-align: left;  /* Align text inside table cells to the left */
+    text-align: left;
 }
 
 
 #pageContent .wikitable {
-    border: 1px solid #94856D;  /* Your desired border color */
+    border: 1px solid #94856D;
     border-collapse: collapse;
     max-width: 100%;
 }
 #pageContent .wikitable th, 
 #pageContent .wikitable td {
-    border: 1px solid #94856D;  /* Same border color for internal dividers */
+    border: 1px solid #94856D;
 }
 
 /* Center certain elements */
 #pageContent .mw-file-element, 
 #pageContent .data-sort-value {
     max-width: 100%;
-    height: auto;     /* Maintain the aspect ratio */
+    height: auto;
     margin-right: 10px;
     margin-left: 0px;
-    display: inline-block;    /* Change to inline-block for centering */
+    display: inline-block;
 }
-#pageContent .infobox .mw-file-element
-{
-    /*display: block;  /* Ensure it's treated as a block-level element */
-    margin: 0 auto;  /* Center the element horizontally */
-    vertical-align: middle;    /* Center vertically if needed */
+#pageContent .infobox {
+    z-index: 500; /* Above other content */
 }
-#pageContent .infobox
-{
-    z-index: 500;               /* Above other content */
+#pageContent .infobox .mw-file-element{
+    margin: 0 auto;
+    vertical-align: middle;
 }
+
 
 /* #################### Table of Contents #################### */
 
-/* Style the Table of Contents */
 #pageContent .toc {
-    list-style-type: none;       /* Remove bullet points */
-    padding-left: 0;             /* Remove default padding */
-    margin-left: 0;              /* Remove default margin */
+    list-style-type: none; /* Remove bullet points */
+    padding-left: 0;
+    margin-left: 0;
     margin-right: auto;
-    margin-top: 8px;           /* Center the table and add space around it */
-    margin-bottom: 8px;           /* Center the table and add space around it */
+    margin-top: 8px;
+    margin-bottom: 8px;
 
-    border-collapse: collapse;  /* Ensures the borders between cells are shared */
-    width: auto;                /* Let the table size itself based on content */
-    max-width: 100%;            /* Ensure the table never exceeds the content width */
-    /*margin: 20px auto;          /* Center the table and add space around it */
-    table-layout: auto;         /* Allow the table to size columns based on content */
-    width: fit-content;         /* Let the table size itself based on content */
+    border-collapse: collapse; /* Ensures the borders between cells are shared */
+    width: auto;
+    max-width: 100%;
+    table-layout: auto;
+    width: fit-content;
 }
 
-/* Style individual TOC items */
 #pageContent .toc li {
-    margin-left: 10px;           /* Custom indentation for nested levels */
+    margin-left: 10px;
 }
 /* Remove bullet points using ::marker */
 #pageContent .toc li::marker {
-    content: '';                 /* Hides the bullet points */
+    content: ''; /* Hides the bullet points */
 }
 
 /* Further indent child elements for subsections */
 #pageContent .toc ul ul {
-    margin-left: 20px;           /* Increase indentation for nested TOC entries */
+    margin-left: 20px; /* Increase indentation for nested TOC entries */
 }
 
-/* Optional: Style the TOC numbering */
+/* Style the TOC numbering */
 #pageContent .toc .tocnumber {
-    font-weight: bold;           /* Make the TOC numbers bold */
-    margin-right: 5px;           /* Add space after the TOC number */
+    font-weight: bold;
+    margin-right: 5px;
 }
 #pageContent .toc .toctitle {
     max-width: 100%;
-    height: auto;     /* Maintain the aspect ratio */
-    margin: 0 auto;  /* Center the element horizontally */
+    height: auto;
+    margin: 0 auto;
 }
 
-/* #################### Body #################### */
 
-/* Optional: Set the body background similar to the wiki's brown background */
-body {
-    background-color: #C0A886;      /* Dark brown background */
-    /*font-family: Arial, sans-serif; /* Similar font */
-    /*font-family: 'PT Serif', serif; /* */
-    font-family: 'Georgia', sans-serif;    /* */
-    color: #333;                    /* Text color for readability */
-    display: flex; /* Enable flexbox layout */
-    flex-direction: column; /* Stack children vertically */
-}
-
-/* #################### Header #################### */
+/* #################### Header Container #################### */
 
 /* Parent container for the image and content */
 #headerContainer {
     display: flex;
     flex-shrink: 0; /* Prevent the header from shrinking */
     align-items: center; /* Vertically aligns the image with the text */
-    margin-bottom: 20px; /* Adds space between the header and the page content */
-}
-
-/* Styling for the image */
-#headerImage {
-    width: 150px; /* Adjust size as needed */
-    height: auto; /* Maintains aspect ratio */
-    margin-right: 20px; /* Adds space between the image and the content */
-    margin-left: 20px;
-    cursor: pointer;
+    margin-bottom: 20px;
 }
 @media screen and (max-width: 768px) {
     #headerContainer {
         flex-direction: column; /* Stack image on top of content */
         align-items: center; /* Center align the content */
     }
+}
 
+/* #################### HeaderContainer > Header Image & Content #################### */
+
+#headerImage {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+@media screen and (max-width: 768px) {
     #headerImage {
-        margin: 0 0 10px 0; /* Adjust margins for the image when stacked */
-        /*content: url('osrswikiracelogo.png'); /* Non-mobile-specific image */
-        /*content: url('osrswikiracelogomobile.png'); /* Mobile-specific image */
         width: 300px;
      }
 }
 
-/* Flex container for the content next to the image */
 #headerContent {
     display: flex;
-    flex-direction: column; /* Stacks input, and game stats vertically */
+    flex-direction: column;
 
-    margin: 10px 0;                 /* Add some spacing above and below the stats */   
-    background-color: #E2DBC8;    /* Creamy background */
-    padding: 5px;                   /* Add some padding */
-    width: 100%;                /* Keep the content in a reasonable width */
+    margin: 10px 0;
+    background-color: #E2DBC8;
+    padding: 5px;
+    width: 100%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    border-radius: 8px;             /* Rounded corners like on the wiki */
-    border: 1px solid #d2d2d2;    /* Light border around the content */
-    line-height: 1.5;               /* 1.5 times the font size */
-    z-index: 1000;                  /* Above other content */
+    border-radius: 8px;
+    border: 1px solid #d2d2d2;
+    line-height: 1.5;
+    z-index: 1000; /* Above other content */
 }
 
-/* #################### Header Content #################### */
-
-#titleContainer {
-    position: fixed; /* Fixes the position relative to the viewport */
-    top: 0px; /* Position at the top */
-}
+/* #################### Header Content > Input & Buttons #################### */
 
 .inputMargin {
     margin: 5px 10px;
-    display: flex;           /* Activates flexbox */
-    flex-direction: row;      /* Ensures items align in a row (horizontally) */
-    align-items: center;      /* Vertically align items */
-    gap: 2px;                /* Adds space between the items */
-    flex-wrap: wrap;          /* Makes sure the items wrap to the next line on smaller screens */
-}
-.inputMargin #copyCodeButton {
-    margin-right: 0px;
+    display: flex;
+    flex-direction: row; /* Align in a row */
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap; /* Makes sure the items wrap to the next line on smaller screens */
 }
 
 .inputField 
 {    
-    background-color: #E2DBC8; /* Similar to OSRS Wiki buttons */
-    color: #94856D;
+    background-color: #E2DBC8;
+    color: #6f604d;
     padding: 5px 10px;
     cursor: pointer;
     font-size: 0.8em;
     margin-right: 0px;
-    border: 2px solid #94856D; /* Added border with color */
+    border: 2px solid #94856D;
     border-radius: 5px;
-    box-sizing: border-box; /* Ensures border and padding are included in the element's width/height */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
     cursor: text; /* Ensure the cursor is set to text input (caret) */
     outline: none; /* Remove the default highlight when the input is focused */
 }
 .inputField:focus {
     outline: none; /* Prevent any highlighting when the input field is clicked */
-    background-color: #E2DBC8; /* Maintain the background color on focus */
+    background-color: #E2DBC8;
+}
+.inputField:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: default;
+    /*opacity: 0.6; /* Make the button slightly transparent */
 }
 
-/* Optional: Close button styling */
 .inputButton {
-    background-color: #94856D; /* Similar to OSRS Wiki buttons */
-    color: #E2DBC8;
+    background-color: #94856D;
+    color: white;
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
@@ -340,28 +313,23 @@ body {
     margin-right: 8px;
 }
 .inputButton:hover {
-    background-color: #6f604d; /* Darken the button slightly on hover */
+    background-color: #6f604d;
 }
 .inputButton:disabled {
-    background-color: #cccccc; /* Light grey background */
-    color: #666666; /* Grey text */
-    cursor: not-allowed; /* Change cursor to indicate it's not clickable */
-    opacity: 0.6; /* Make the button slightly transparent */
+    background-color: #cccccc;
+    color: #666666;
+    cursor: default;
+    opacity: 0.6;
 }
 .inputButton:disabled:hover {
-    background-color: #cccccc; /* Maintain same background on hover when disabled */
+    background-color: #cccccc;
 }
+
 .inputRight {
     margin-left: auto; /* Pushes the element to the right */
 }
-/*
-#donateButton {
-    font-family: inherit;
-    font-size: inherit;
-    vertical-align: middle;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}*/
+
+#copyCodeButton,
 #donateButton,
 #dailyButton
 {
@@ -371,27 +339,27 @@ body {
 /* #################### Back Button #################### */
 
 #backButtonOverlay {
-    position: fixed; /* Keep it in view as the user scrolls */
-    bottom: 20px; /* Distance from the bottom of the page */
-    right: 20px; /* Distance from the right of the page */
-    z-index: 10; /* Ensure it appears above other content */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
 }
 
 #backButton {
-    background-color: #94856D; /* Light cream background matching the overlay */
-    padding: 10px 20px; /* Some padding for the button */
-    border: 1px solid #94856D; /* Matching OSRS Wiki border color */
-    border-radius: 10px; /* Rounded corners */
-    font-family: 'PT Serif', serif; /* Use the same font as in your other elements */
-    color: white; /* Darker text for better contrast */
-    cursor: pointer; /* Indicate it’s clickable */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add some depth */
+    background-color: #94856D;
+    padding: 10px 20px;
+    border: 1px solid #94856D;
+    border-radius: 10px;
+    font-family: 'PT Serif', serif;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: background-color 0.3s ease; /* Smooth transition effect for hover */
+    transition: background-color 0.3s ease;
 }
 
 #backButton:hover {
-    background-color: #6f604d; /* Slightly darker when hovered */
+    background-color: #6f604d;
 }
 
 
@@ -399,41 +367,40 @@ body {
 
 #clickCounter,
 #timerCounter {
-    display: inline-block; /* Keeps the counter inline with the label */
-    margin-left: 5px;     /* Adds a little space between the label and the counter */
-    margin-right: 15px;     /* Adds a little space between the label and the counter */
-    font-weight: bold;     /* Makes the counter stand out */
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 15px;
+    font-weight: bold;
     align-items: center;
     justify-content: center;
-    text-align: center; /* Optional: Center the timer text */
+    text-align: center;
 }
 #clickCounter {
-    width: 30px; /* Adjust based on your expected timer length (e.g., '99:59') */
+    width: 30px;
 }
 #timerCounter {
-    width: 50px; /* Adjust based on your expected timer length (e.g., '99:59') */
+    width: 50px;
 }
 
 
-/* #################### Headers #################### */
+/* #################### Headers (h1 h2) #################### */
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'PT Serif', serif;
-    position: relative;          /* Position relative for positioning pseudo-element */
-    /*margin-bottom: 5px;        /* Space between header and bar */
-    margin-top: 0px;           /* Space between header and bar */
-}/* Add a bar underneath headers */
+    position: relative;
+    margin-top: 0px;
+}
 
 h1::after, h2::after {
-    content: '';                /* Required for pseudo-elements */
-    display: block;            /* Make it a block element */
-    height: 0.5px;               /* Height of the bar */
-    background-color: #CEC08D; /* Color of the bar */
-    margin-top: 0px;           /* Space between header and bar */
-    margin-bottom: 16px;           /* Space between header and bar */
-    width: 100%;               /* Full width of the header */
-    position: absolute;        /* Position it relative to the header */
-    left: 0;                   /* Align to the left */
+    content: '';
+    display: block;
+    height: 0.5px;
+    background-color: #CEC08D;
+    margin-top: 0px;
+    margin-bottom: 16px;
+    width: 100%;
+    position: absolute;
+    left: 0;
 }
 /* Prevent the ::after pseudo-element for h1 and h2 inside any .toc ancestor */
 :not(.toc):has(h1)::after,
