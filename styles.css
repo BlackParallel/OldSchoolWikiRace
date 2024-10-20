@@ -211,6 +211,7 @@ body {
 }
 #pageContent .infobox-image {
     display: inline-block;
+    flex: none;
 }
 
 
