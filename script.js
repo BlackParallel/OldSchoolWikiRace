@@ -626,10 +626,12 @@ document.addEventListener('click', function(event) {
     const endDropdown = document.getElementById('startPageSuggestions');
     
     // Check if the clicked element is not the search box or dropdown
-    if (!startSearchBox.contains(event.target) && !startDropdown.contains(event.target) &&
-        !endSearchBox.contains(event.target) && !endDropdown.contains(event.target)) {
-            startDropdown.style.display = 'none'; // Hide the dropdown
-            endDropdown.style.display = 'none'; // Hide the dropdown
+    if (!startSearchBox.contains(event.target) && 
+        !startDropdown.contains(event.target) &&
+        !endSearchBox.contains(event.target) && 
+        !endDropdown.contains(event.target)) {
+            startDropdown.innerHTML = ''; // Hide the dropdown
+            endDropdown.innerHTML = ''; // Hide the dropdown
     }
 });
 
