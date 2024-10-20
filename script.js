@@ -626,8 +626,8 @@ document.getElementById('pasteCodeButton').addEventListener('click', async funct
 
 // Event listener to copy the game code to clipboard
 document.getElementById('copyURLButton').addEventListener('click', function() {
-    sp = document.getElementById('startPage');
-    ep = document.getElementById('endPage');
+    sp = document.getElementById('startPage').value;
+    ep = document.getElementById('endPage').value;
     const newUrl = `${website}/?start=${encodeURIComponent(sp)}&end=${encodeURIComponent(sp)}`;
     navigator.clipboard.writeText(newUrl).then(() => {
         showNotification('Code copied to clipboard!');
