@@ -203,7 +203,7 @@ body {
     margin: 0 auto;
     vertical-align: middle;
 }
-#pageContent .infobox th {
+#pageContent .infobox th:not(.infobox-header) {
     margin: 0 auto;
     display: block;
     max-width: 100%;
