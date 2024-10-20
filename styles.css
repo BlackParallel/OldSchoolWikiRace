@@ -210,11 +210,12 @@ body {
     height: auto;
 }
 #pageContent .infobox-image img {
-    position: absolute;
-    top: 50%;
+    position: relative;
     left: 50%;
-    transform: translate(-50%, -50%);  /* Moves the element back by half its own width and height */
-    
+    transform: translate(-50%, 0%);
+}
+#pageContent .infobox .infobox-padding {
+    height: 0em;
 }
 
 
